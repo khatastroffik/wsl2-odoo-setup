@@ -1,0 +1,28 @@
+{
+  "name": "@khatastroffik/wsl2-odoo-setup",
+  "version": "1.0.0",
+  "description": "Scripts and instructions to ease setting up Odoo 12 or Odoo 14 on windows WSL2 within few minutes",
+  "repository": {
+    "url": "https://github.com/khatastroffik/wsl2-odoo-setup.git",
+    "type": "git"
+  },
+  "bugs": {
+    "url": "https://github.com/khatastroffik/wsl2-odoo-setup/issues"
+  },
+  "keywords": [
+    "WSL2",
+    "Linux",
+    "Odoo",
+    "Odoo12",
+    "Odoo14",
+    "setup",
+    "shell",
+    "postgreSQL"
+  ],
+  "author": {
+    "name": "Loïs Bégué",
+    "url": "https://www.khatastroffik.net"
+  },
+  "homepage": "https://www.khatastroffik.net",
+  "license": "MIT"
+}
