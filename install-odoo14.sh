@@ -55,3 +55,8 @@ sudo echo -e "alias odooee='~/odoo/community/odoo-bin -c ~/odoo/cfg/odoo-ee.conf
 echo -e "\n===== 6 => Generate initial/empty databases for Odoo CE and EE"
 ~/odoo/community/odoo-bin -c ~/odoo/cfg/odoo-ce.conf -d ce.initialdb --without-demo=all --stop-after-init
 ~/odoo/community/odoo-bin -c ~/odoo/cfg/odoo-ee.conf -d ee.initialdb -i web_enterprise --without-demo=all --stop-after-init
+
+# =======================================================================
+echo -e "\n=============================================================="
+echo -e "\n       The Odoo Setup Procedure has been completed"
+echo -e "\n=============================================================="

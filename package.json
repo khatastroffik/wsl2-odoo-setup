@@ -1,7 +1,7 @@
 {
   "name": "@khatastroffik/wsl2-odoo-setup",
   "version": "1.0.0",
-  "description": "Scripts and instructions to ease setting up Odoo 12 or Odoo 14 on windows WSL2 within few minutes",
+  "description": "Scripts and instructions to setup Odoo on windows WSL2 within few minutes",
   "repository": {
     "url": "https://github.com/khatastroffik/wsl2-odoo-setup.git",
     "type": "git"
@@ -15,6 +15,8 @@
     "Odoo",
     "Odoo12",
     "Odoo14",
+    "CE",
+    "EE",
     "setup",
     "shell",
     "postgreSQL"

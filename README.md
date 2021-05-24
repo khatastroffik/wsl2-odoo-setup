@@ -59,11 +59,13 @@ sudo -u postgres createuser -s $USER
 sudo echo -E "\necho 'Starting the postgreSQL service...'\nsudo service postgresql start" >> ~/.profile
 ```
 
-Note: The *active "sudoer" user* (in the current shell) is used to create a corresponding postgreSQL user, which should manage the Db instead of the "root" user.
+Notes:
+- The currently *active "sudoer" user* is used to create a corresponding postgreSQL user, which should (for security reasons) manage the DB instead of the "root" user.
+- Other options exist to automatically start the postgreSQL service when the distro is started. Usage of the "*.profile*" trick has been prefered here, due to its simplicity and because the postgreSQL service start is made visible to (thus, controllable by) the user.
 
 ### Install Odoo 14.0 Community and Enterprise Editions
 
-Odoo Community Edition and Enterprise Edition (requires explicit access to the EE repository) are installed as well as some additional packages/libraries. An initial configuration is automatically created.
+Odoo Community Edition (CE; public Odoo GitHub repository) and Enterprise Edition (EE; This GitHub repository requires explicit access: granted by Odoo SA.) are installed as well as some additional packages/libraries. An initial configuration is automatically created.
 
 ```bash
 git clone -b 14.0 --single-branch --depth=1 https://github.com/odoo/odoo.git ~/odoo/community
@@ -80,7 +82,7 @@ mkdir -p ~/odoo/3rdparty
 
 Note: the `~/odoo/3rdparty` folder needs to be (manually) added to the `addons_path` of the odoo configuration file. It is intended to contain all 3rd-party modules, such as those from the OCA or from the App-Store.
 
-**Important**: you may need a *personal access token* (to be created in your github account) to be used as a password when cloning the Odoo-Enterprise repository.
+**Important**: you may need a *personal access token* (to be created in your own github account) to be used as a password when cloning the Odoo-Enterprise repository.
 
 ### Create and link a folder for module development
 
@@ -100,29 +102,31 @@ Notes:
 
 ### Start "Odoo Community Edition" server with an initial database
 
-To ease initial work and to test the setup was successfull, a "community" compatible database (empty i.e. without demo data) is automatically generated.
+To ease initial work and to test the setup was successfull, a "community" compatible database (empty i.e. without demo data) is used.
 
 ```bash
-~/odoo/community/odoo-bin -d cc.initialdb --without-demo=all --stop-after-init
 ~/odoo/community/odoo-bin -d cc.initialdb
 ```
 
+See below for instructions on how to "*Generate initial databases for CE and EE*".
+
 ### Start "Odoo Enterprise Edition" server with an initial Database
 
-To ease initial work and to test the setup was successfull, an "enterprise" compatible database (empty i.e. without demo data) is automatically generated.
+To ease initial work and to test the setup was successfull, an "enterprise" compatible database (empty i.e. without demo data) is used.
 
-Note: For the Enterprise edition, you must add the path of the enterprise addons folder into the `addons-path` argument of the CLI Odoo call or in the Odoo configuration file.
+Note: For the Enterprise edition, you **must** add the path of the enterprise addons folder into the `addons-path` argument of the CLI Odoo call or in the Odoo configuration file.
 
 ```bash
-~/odoo/community/odoo-bin -d ee.initialdb -i web_enterprise --without-demo=all --stop-after-init
 ~/odoo/community/odoo-bin -d ee.initialdb
 ```
 
-Important: the path to the "enterprise" folder  **must come before the other paths** in `addons-path` of your odoo configuration (either as parameter of the CLI or within the odoo configuration file).
+Important: the **path** to the "enterprise" folder  **must come before the other paths** in `addons-path` of your odoo configuration (either as parameter of the CLI or within the odoo configuration file).
 
 ```ini
 addons_path = /home/odoo/centerprise, ...
 ```
+
+See below for instructions on how to "*Generate initial databases for CE and EE*".
 
 ## Odoo 14 additional tools and configuration
 
@@ -166,12 +170,12 @@ sudo npm install -g rtlcss
 
 ### use pip commands to check your setup
 
-- sudo pip3 list
-- sudo pip3 list --outdated
-- sudo pip3 search <search_term>
-- sudo pip3 install <package_name>
-- sudo pip3 install --upgrade <package_name>
-- sudo pip3 show <package_name>
+- List all pip3 packages: `sudo pip3 list`
+- List all outdated pip3 packages: `sudo pip3 list --outdated`
+- Search for a pip3 package/content: `sudo pip3 search <search_term>`
+- Install a pip3 package by name: `sudo pip3 install <package_name>`
+- Upgrade or install a pip3 package by name: `sudo pip3 install --upgrade <package_name>`
+- Display information on a pip3 package: `sudo pip3 show <package_name>`
 
 ## License
 
@@ -179,11 +183,11 @@ This project is licensed under the terms of the MIT license.
 
 ## Sources:
 
-- https://www.odoo.com/documentation/14.0/administration/install.html#setup-install-source
-- https://linuxize.com/post/how-to-install-odoo-14-on-ubuntu-20-04/
-- https://linuxize.com/post/how-to-deploy-odoo-12-on-ubuntu-18-04/
-- https://www.digitalocean.com/community/tutorials/how-to-install-python-3-and-set-up-a-programming-environment-on-an-ubuntu-20-04-server-de
-- https://www.skillsugar.com/how-to-change-the-default-python-version
-- https://linuxize.com/post/how-to-install-python-3-9-on-ubuntu-20-04/
-- https://www.osradar.com/how-to-install-wkhtmltopdf-and-wkhtmltoimage-on-ubuntu-20-04/
-- https://phoenixnap.com/kb/how-to-install-pip-on-ubuntu
+- [Install Odoo 14 (official Odoo documentation)](https://www.odoo.com/documentation/14.0/administration/install.html#setup-install-source)
+- [How to install Odoo 14 on Ubuntu 20.04](https://linuxize.com/post/how-to-install-odoo-14-on-ubuntu-20-04/)
+- [How to install Odoo 12 on Ubuntu 18.04](https://linuxize.com/post/how-to-deploy-odoo-12-on-ubuntu-18-04/)
+- [How to install python3 on Ubuntu 20.04 and setup a dev environment](https://www.digitalocean.com/community/tutorials/how-to-install-python-3-and-set-up-a-programming-environment-on-an-ubuntu-20-04-server-de)
+- [How to change the default python version on Linuxes](https://www.skillsugar.com/how-to-change-the-default-python-version)
+- [How to install python 3.9 on Ubuntu 20.04](https://linuxize.com/post/how-to-install-python-3-9-on-ubuntu-20-04/)
+- [How to install wkhtmltopdf on ubuntu 20.04](https://www.osradar.com/how-to-install-wkhtmltopdf-and-wkhtmltoimage-on-ubuntu-20-04/)
+- [How to install pip on Ubuntu](https://phoenixnap.com/kb/how-to-install-pip-on-ubuntu)
