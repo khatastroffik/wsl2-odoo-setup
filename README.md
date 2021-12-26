@@ -56,6 +56,7 @@ PostgreSQL is installed and its service is configured to automatically start whe
 sudo apt install -y postgresql postgresql-client
 sudo service postgresql start
 sudo -u postgres createuser -s $USER
+createdb $USER
 sudo echo -E "\necho 'Starting the postgreSQL service...'\nsudo service postgresql start" >> ~/.profile
 ```
 
